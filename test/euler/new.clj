@@ -34,24 +34,25 @@
 " problem user problem))
 
 (defn create-new [{:keys [problem user]}]
-  (when (contains? (into #{} [problem user]) nil)
-    (throw (Exception. (str "Some required arguments are null: "
-                            {:problem problem
-                             :user user}))))
-  (let [data-out (io/file "src" "euler"
-                          (str "p" problem)
-                          "data.cljc")
-        out (io/file "src" "euler"
-                     (str "p" problem)
-                     (str user ".cljc"))]
-    (io/make-parents out)
-    (when-not (.exists data-out)
-      (spit data-out (data-ns problem))
-      (println "Created a new file at" (.getPath data-out)))
-    (if-not (.exists out)
-      (do (spit out (user-ns problem user))
-          (println "Created a new file at" (.getPath out)))
-      (println "File already exists:" (.getPath out)))))
+  (let [prob (format "%03d" problem)]
+    (when (contains? (into #{} [problem user]) nil)
+      (throw (Exception. (str "Some required arguments are null: "
+                              {:problem problem
+                               :user user}))))
+    (let [data-out (io/file "src" "euler"
+                            (str "p" prob)
+                            "data.cljc")
+          out (io/file "src" "euler"
+                       (str "p" prob)
+                       (str user ".cljc"))]
+      (io/make-parents out)
+      (when-not (.exists data-out)
+        (spit data-out (data-ns prob))
+        (println "Created a new file at" (.getPath data-out)))
+      (if-not (.exists out)
+        (do (spit out (user-ns prob user))
+            (println "Created a new file at" (.getPath out)))
+        (println "File already exists:" (.getPath out))))))
 
 (def cli-options
   ;; An option with a required argument
