@@ -6,11 +6,8 @@
 (defn data-ns [problem]
   (format "(ns euler.p%s.data)
 
-(def input)
+(def answer nil)
 
-(def answer-1)
-
-(def answer-2)
 " problem))
 
 (defn user-ns [problem user]
@@ -18,24 +15,16 @@
   (:refer-clojure :exclude [read-string format])
   (:require
    [euler.utils :as u :refer [deftest read-string format]]
-   [euler.p%s.data :refer [input answer-1 answer-2]]
+   [euler.p%s.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
-(defn solve-1 []
-  ;; TODO
-)
-
-(defn solve-2 []
+(defn solve []
   ;; TODO
 )
 
 (deftest part-1
-  (is (= (str answer-1)
-         (str (solve-1)))))
-
-(deftest part-2
-  (is (= (str answer-2)
-         (str (solve-2)))))
+  (is (= (str answer)
+         (str (solve)))))
 
 ;;;; Scratch
 

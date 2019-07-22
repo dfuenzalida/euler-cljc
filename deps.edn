@@ -30,4 +30,4 @@
   :new
   {:extra-paths ["test"]
    :extra-deps {org.clojure/tools.cli {:mvn/version "0.4.1"}}
-   :main-opts ["-m" "aoc.new"]}}}
+   :main-opts ["-m" "euler.new"]}}}
