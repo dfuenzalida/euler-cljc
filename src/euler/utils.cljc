@@ -7,7 +7,7 @@
             #?(:cljs [goog.string.format])
             [clojure.string :as str]
             #?(:cljs [oops.core :refer [ocall oget]]))
-  #?(:cljs (:require-macros [aoc.utils :refer [deftest]])))
+  #?(:cljs (:require-macros [euler.utils :refer [deftest]])))
 
 (defmacro deftime
   "Private. deftime macro from https://github.com/cgrand/macrovich"
