@@ -1,6 +1,6 @@
 # Euler CLJC
 
-Cross platform Project Euler solutions.
+Solutions to problems from [Project Euler](https://projecteuler.net) written in portable Clojure[script].
 
 This project is based on from the [Advent of CLJC](https://github.com/borkdude/advent-of-cljc) project.
 
