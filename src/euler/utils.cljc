@@ -34,8 +34,8 @@
   "Returns a lazy sequence of all primes"
   ([] (cons 2 (lazy-seq (primes 3 [2]))))
   ([n ps]
-   (let [small-ps (take-while #(< (* % %) n) ps)
-         divisor  (first (map #(zero? (rem n %)) small-ps))]
+   (let [small-ps (take-while #(<= (* % %) n) ps)
+         divisor  (first (filter #(zero? (rem n %)) small-ps))]
      (if divisor
        (recur (+ 2 n) ps)
        (cons n (lazy-seq (primes (+ 2 n) (conj ps n))))))))
