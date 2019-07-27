@@ -28,15 +28,16 @@
   (->> (map #(apply pow %) m)
        (reduce *)))
 
-(defn solve []
-  (->> (range 1 21)
+(defn solve [n]
+  (->> (range 1 (inc n))
        (map factors-map)
        (reduce (partial merge-with max))
        product-from-map))
 
 (deftest part-1
+  (is (= 2520 (solve 10)))
   (is (= (str answer)
-         (str (solve)))))
+         (str (solve 20)))))
 
 ;;;; Scratch
 
