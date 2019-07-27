@@ -30,6 +30,16 @@
 
 (def read-string edn/read-string)
 
+(defn primes
+  "Returns a lazy sequence of all primes"
+  ([] (cons 2 (lazy-seq (primes 3 [2]))))
+  ([n ps]
+   (let [small-ps (take-while #(< (* % %) n) ps)
+         divisor  (first (map #(zero? (rem n %)) small-ps))]
+     (if divisor
+       (recur (+ 2 n) ps)
+       (cons n (lazy-seq (primes (+ 2 n) (conj ps n))))))))
+
 (defn count'
   "Like core count, but when applied to a directly reduceable coll, does not
   force the collection to be realized fully in memory."
