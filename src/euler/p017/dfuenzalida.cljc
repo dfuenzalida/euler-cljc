@@ -1,14 +1,14 @@
 (ns euler.p017.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest read-string format]]
+   [euler.utils :as u :refer [deftest]]
    [euler.p017.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
 (def smaller-numbers
   (mapv name '[zero one two three four five six seven eight
-               nine ten eleven twelve thirteen fourteen fifteen
-               sixteen seventeen eighteen nineteen]))
+               nine ten eleven twelve thirteen fourteen
+               fifteen sixteen seventeen eighteen nineteen]))
 (def tens
   (mapv name '[zero ten twenty thirty forty fifty
                sixty seventy eighty ninety]))
@@ -18,7 +18,7 @@
     (= n 1000)    "one thousand"
     (< 99 n 1000) (str
                    (smaller-numbers (quot n 100)) " hundred"
-                   (if (= 0 (rem n 100)) "" " and ") ;; any 100-remainder?
+                   (when (pos? (rem n 100)) " and ") ;; any 100-remainder?
                    (cardinal (rem n 100)))
 
     (< 19 n 100)  (str (tens (quot n 10)) "-" (cardinal (rem n 10)))
