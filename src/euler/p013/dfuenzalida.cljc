@@ -6,7 +6,7 @@
    [clojure.test :as t :refer [is testing]]))
 
 (defn to-bigint [x]
-  #?(:clj (bigint x)
+  #?(:clj  x
      :cljs (js/BigInt x)))
 
 (defn solve []
@@ -23,4 +23,4 @@
 
 (comment
   (t/run-tests)
-)
+  )
