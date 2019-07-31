@@ -4,6 +4,10 @@ Solutions to problems from [Project Euler](https://projecteuler.net) written in 
 
 This project is based on from the [Advent of CLJC](https://github.com/borkdude/advent-of-cljc) project.
 
+## Contributors
+
+![dfuenzalida](https://projecteuler.net/profile/dfuenzalida.png)
+
 ## Contribute
 
 PRs welcome. Make a new solution file with the `new` script:
