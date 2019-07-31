@@ -8,19 +8,19 @@ This project is based on from the [Advent of CLJC](https://github.com/borkdude/a
 
 PRs welcome. Make a new solution file with the `new` script:
 
-    script/new 012 username
+    script/new number username
 
-where `username` is your Github or Bitbucket username. Then fill in the solution in the file. If the input and answers are still empty you will have to provide it in `data.cljc`.
+where `number` is the problem number and `username` is your Github or Bitbucket username. Then fill in the solution in the file. If the input and answers are still empty you will have to provide it in `data.cljc`.
 
 This repo does not accept multiple inputs and answers.
 
-## Dev
+## Development
 
-Read [here](https://nrepl.xyz/nrepl/usage/server.html) how to get an nREPL for this project.
+Read [here](https://github.com/dfuenzalida/euler-cljc/wiki/How-to-launch-a-REPL-for-this-project) how to get an REPL for this project.
 
 ## Tests
 
-Make sure the tests for your solution pass with the `test-one` script.
+Make sure the tests for your solution pass with the `test-one` script, eg: `./script/test-one 42 myusername`.
 
 Please do not run calculations outside the tests. Memoized functions are permitted. Top-level lazy sequences are fine as long as they are not realized outside the tests.
 
@@ -36,7 +36,7 @@ Run all tests:
 
 Run one test:
 
-    script/test-one 012 username
+    script/test-one 12 username
     
 Run with instrumentation:
 
