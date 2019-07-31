@@ -40,6 +40,10 @@
        (recur (+ 2 n) ps)
        (cons n (lazy-seq (primes (+ 2 n) (conj ps n))))))))
 
+(defn to-bigint [x]
+  #?(:clj  (bigint x)
+     :cljs (js/BigInt x)))
+
 (defn count'
   "Like core count, but when applied to a directly reduceable coll, does not
   force the collection to be realized fully in memory."
