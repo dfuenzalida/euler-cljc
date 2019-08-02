@@ -22,7 +22,7 @@
                         (quot path 2))))))
 
 (defn find-max [vectors]
-  (let [num-paths (reduce * (repeat (dec (count vectors)) 2))]
+  (let [num-paths (bit-shift-left 1 (dec (count vectors)))] ;; 2^(n-1)
     (->> (range num-paths)                   ;; for every route
          (map (partial numbers-seq vectors)) ;; compute the sequences
          (map #(reduce + %))                 ;; compute their sum
