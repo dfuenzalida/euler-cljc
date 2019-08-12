@@ -22,7 +22,7 @@
   ;; TODO
 )
 
-(deftest part-1
+(deftest tests
   (is (= (str answer)
          (str (solve)))))
 
