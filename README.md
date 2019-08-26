@@ -1,5 +1,7 @@
 # Euler CLJC
 
+[![Build Status](https://dev.azure.com/denisfuenzalida/euler-cljc/_apis/build/status/dfuenzalida.euler-cljc?branchName=master)](https://dev.azure.com/denisfuenzalida/euler-cljc/_build/latest?definitionId=1&branchName=master)
+
 Solutions to problems from [Project Euler](https://projecteuler.net) written in portable Clojure[script].
 
 This project is based on from the [Advent of CLJC](https://github.com/borkdude/advent-of-cljc) project.
