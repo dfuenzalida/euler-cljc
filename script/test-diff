@@ -1,0 +1,79 @@
+#!/bin/bash
+
+exit_code=0
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ $branch = "master" ]; then
+    # test last commit
+    files=$(git diff --name-only HEAD..HEAD~1)
+else
+    # test all different namespaces from master
+    files=$(git diff --name-only origin/master)
+fi
+
+function files_to_namespaces () {
+    files=$1
+    filter=$2
+    echo "$files" \
+        | grep '^src\|^test' \
+        | grep -v '^src\/aoc\/instrument\.cljc' \
+        | grep "$filter" \
+        | sed 's/^src\///' \
+        | sed 's/^test\///' \
+        | sed 's/\.cljc$//' \
+        | sed 's/\//\./g'
+}
+
+function namespaces_to_opts () {
+    namespaces=$1
+    echo "$namespaces" \
+        | tr '\r\n' '#' \
+        | echo "#$(cat -)" \
+        | sed 's/#$//' \
+        | sed 's/#/ -n /g'
+}
+
+if [ $CI ]; then
+    rm -rf out
+    mkdir -p out
+    touch out/scores.edn
+fi
+
+echo "==== Performing tests on different CLJ and CLJS namespaces"
+
+clj_namespaces=$(files_to_namespaces "${files[@]}" "cljc\?")
+
+if [ -z "$clj_namespaces" ]; then
+    echo -e "\n==== No differing CLJ namespaces, nothing to test."
+else
+    echo "==== Running CLJ tests on JVM"
+    echo -e "\nFound differing CLJ namespaces:\n$clj_namespaces"
+    ns_opts=$(namespaces_to_opts "${clj_namespaces[@]}")
+    clj_cmd="clojure -J-Xmx3200m -R:test:test-clj -O:test-clj -e (require,'patch.clj-2443) -m cognitect.test-runner -d src $ns_opts"
+    $clj_cmd
+fi
+
+if [ $? != 0 ]; then
+    exit_code=1
+fi
+
+cljs_namespaces=$(files_to_namespaces "${files[@]}" "clj[cs]")
+
+if [ -z "$cljs_namespaces" ]; then
+    echo -e "\n==== No differing CLJS namespaces, nothing to test."
+else
+    echo -e "\n==== Compiling CLJS and running tests on Node"
+    echo -e "\nFound differing CLJS namespaces:\n$cljs_namespaces"
+    rm -rf cljs-test-runner-out
+    mkdir -p cljs-test-runner-out/gen
+    ns_opts=$(namespaces_to_opts "${cljs_namespaces[@]}")
+    cljs_cmd="clojure -A:test:test-cljs -d src -c cljs-opts.edn -D doo-opts.edn -e skip-cljs $ns_opts"
+    $cljs_cmd
+fi
+
+if [ $? != 0 ]; then
+    exit_code=1
+fi
+
+exit "$exit_code"
