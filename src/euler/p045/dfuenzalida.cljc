@@ -5,9 +5,14 @@
    [euler.p045.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
-(defn triangles [] (map (fn [n] (/ (* n (inc n)) 2)) (rest (range))))
-(defn pentagonals [] (map (fn [n] (/ (* n (dec (* 3 n))) 2)) (rest (range))))
-(defn hexagonals [] (map (fn [n] (* n (dec (* 2 n)))) (rest (range))))
+(defn triangles []
+  (map (fn [n] (/ (* n (inc n)) 2)) (rest (range))))
+
+(defn pentagonals []
+  (map (fn [n] (/ (* n (dec (* 3 n))) 2)) (rest (range))))
+
+(defn hexagonals []
+  (map (fn [n] (* n (dec (* 2 n)))) (rest (range))))
 
 (defn matches [ts ps hs]
   (let [t (first ts)
