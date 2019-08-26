@@ -5,7 +5,8 @@
    [euler.p044.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
-(defn pentagonals [] (map (fn [n] (/ (* n (dec (* 3 n))) 2)) (rest (range))))
+(defn pentagonals []
+  (map (fn [n] (/ (* n (dec (* 3 n))) 2)) (rest (range))))
 
 ;; limit found increasing by powers of ten through different rounds.
 ;; Looping over it in the code caused Node to crash, unable to GC enough memory.
