@@ -1,7 +1,7 @@
 (ns euler.p005.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest read-string format]]
+   [euler.utils :as u :refer [deftest md5]]
    [euler.p005.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -34,10 +34,10 @@
        (reduce (partial merge-with max))
        product-from-map))
 
-(deftest part-1
+(deftest tests
   (is (= 2520 (solve 10)))
   (is (= (str answer)
-         (str (solve 20)))))
+         (md5 (str (solve 20))))))
 
 ;;;; Scratch
 

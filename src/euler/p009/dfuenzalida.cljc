@@ -1,7 +1,7 @@
 (ns euler.p009.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest]]
+   [euler.utils :as u :refer [deftest md5]]
    [euler.p009.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -13,9 +13,9 @@
          :when (= (+ (* x x) (* y y)) (* z z))]
      (* x y z))))
 
-(deftest part-1
+(deftest tests
   (is (= (str answer)
-         (str (solve)))))
+         (md5 (str (solve))))))
 
 ;;;; Scratch
 
