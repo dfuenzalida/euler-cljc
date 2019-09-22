@@ -1,7 +1,7 @@
 (ns euler.p038.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest parse-int]]
+   [euler.utils :as u :refer [deftest parse-int md5]]
    [euler.p038.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -28,7 +28,7 @@
   (is (= 192384576 (best-product 192)))
   (is (pandigital? (best-product 192)))
   (is (= (str answer)
-         (str (solve)))))
+         (md5 (str (solve))))))
 
 ;;;; Scratch
 

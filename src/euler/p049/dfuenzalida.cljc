@@ -1,7 +1,7 @@
 (ns euler.p049.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest read-string primes]]
+   [euler.utils :as u :refer [deftest read-string primes md5]]
    [euler.p049.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
  
@@ -36,7 +36,7 @@
   (is (= (->> [1487 4817 8147] (apply str) read-string)
          (solve first)))
   (is (= (str answer)
-         (str (solve last)))))
+         (md5 (str (solve last))))))
  
 ;;;; Scratch
  

@@ -1,7 +1,7 @@
 (ns euler.p047.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest primes]]
+   [euler.utils :as u :refer [deftest primes md5]]
    [euler.p047.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -31,7 +31,7 @@
   (is (= 14 (solve 2)))
   (is (= 644 (solve 3)))
   (is (= (str answer)
-         (str (solve 4)))))
+         (md5 (str (solve 4))))))
 
 ;;;; Scratch
 

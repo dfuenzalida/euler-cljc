@@ -1,7 +1,7 @@
 (ns euler.p045.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest read-string format]]
+   [euler.utils :as u :refer [deftest md5]]
    [euler.p045.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -39,9 +39,9 @@
 (deftest tests
   (is (= [1 40755] (take 2 (matches (triangles) (pentagonals) (hexagonals)))))
   (is (= (str answer)
-         (str (solve))))
+         (md5 (str (solve)))))
   (is (= (str answer)
-         (str (solve2)))))
+         (md5 (str (solve2))))))
 
 ;;;; Scratch
 

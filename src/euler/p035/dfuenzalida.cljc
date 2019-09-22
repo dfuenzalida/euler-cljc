@@ -1,7 +1,7 @@
 (ns euler.p035.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest parse-int primes]]
+   [euler.utils :as u :refer [deftest parse-int primes md5]]
    [euler.p035.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -27,7 +27,7 @@
 (deftest tests
   (is (= 13 (solve 100)))
   (is (= (str answer)
-         (str (solve 1000000)))))
+         (md5 (str (solve 1000000))))))
 
 ;;;; Scratch
 
