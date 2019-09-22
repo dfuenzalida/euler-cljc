@@ -16,7 +16,7 @@ Clone this repo and find a [problem](https://projecteuler.net/archives) that you
 
     script/new number username
 
-where `number` is the problem number and `username` is your Github or Bitbucket username. Then fill in the solution in the file. If the input and answers are still empty you will have to provide it in the file `data.cljc`.
+where `number` is the problem number and `username` is your Github or Bitbucket username. Then fill in the solution in the file. If the input and answer are still empty you will have to provide its md5 hash in the file `data.cljc`, using the `md5` function provided. This is required to avoid storing the actual solutions in plain text in the repo.
 
 Once you are comfortable with your solution, test it as described below and submit a pull request. If you have an account in Project Euler, you can also submit your profile image to be listed in the *Contributors* section.
 

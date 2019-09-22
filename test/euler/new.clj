@@ -6,7 +6,7 @@
 (defn data-ns [problem]
   (format "(ns euler.p%s.data)
 
-(def answer nil)
+(def answer \"put-the-md5-of-the-solution-here\")
 
 " problem))
 
@@ -14,17 +14,17 @@
   (format "(ns euler.p%s.%s
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest read-string format]]
+   [euler.utils :as u :refer [deftest md5 read-string format]]
    [euler.p%s.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
 (defn solve []
-  ;; TODO
+  ;; TODO Implement this
 )
 
 (deftest tests
   (is (= (str answer)
-         (str (solve)))))
+         (md5 (str (solve))))))
 
 ;;;; Scratch
 
