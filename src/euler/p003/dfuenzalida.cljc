@@ -1,7 +1,7 @@
 (ns euler.p003.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest primes]]
+   [euler.utils :as u :refer [deftest primes md5]]
    [euler.p003.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -11,10 +11,10 @@
       n
       (recur (/ n divisor)))))
 
-(deftest part-1
+(deftest tests
   (is (= 29 (solve 13195)))
   (is (= (str answer)
-         (str (solve 600851475143)))))
+         (md5 (str (solve 600851475143))))))
 
 ;;;; Scratch
 

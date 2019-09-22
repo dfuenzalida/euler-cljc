@@ -1,10 +1,12 @@
 (ns euler.utils
+  (:import #?(:cljs [goog.crypt Md5]))
   (:refer-clojure :exclude [time format read-string ExceptionInfo])
   (:require #?(:clj [clojure.edn :as edn]
                :cljs [cljs.reader :as edn])
             [clojure.test]
             #?(:cljs [goog.string :as gstring])
             #?(:cljs [goog.string.format])
+            #?(:cljs [goog.crypt])
             [clojure.string :as str]
             #?(:cljs [oops.core :refer [ocall oget]]))
   #?(:cljs (:require-macros [euler.utils :refer [deftest]])))
@@ -27,6 +29,14 @@
 
 (def format #?(:clj clojure.core/format
                :cljs gstring/format))
+
+(defn md5 [s]
+  #?(:clj (let [digester (java.security.MessageDigest/getInstance "MD5")]
+            (->> (.digest digester (.getBytes s))
+                 (map (partial format "%02x"))
+                 (apply str)))
+     :cljs (let [digester (doto (goog.crypt.Md5.) .reset (.update s))]
+             (->> (.digest digester) goog.crypt.byteArrayToHex))))
 
 (def read-string edn/read-string)
 

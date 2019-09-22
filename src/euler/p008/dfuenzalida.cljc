@@ -1,7 +1,7 @@
 (ns euler.p008.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest parse-int]]
+   [euler.utils :as u :refer [deftest parse-int md5]]
    [euler.p008.data :refer [input answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -14,10 +14,10 @@
        (map #(apply * %))
        (reduce max)))
 
-(deftest part-1
+(deftest tests
   (is (= 5832 (solve 4)))
   (is (= (str answer)
-         (str (solve 13)))))
+         (md5 (str (solve 13))))))
 
 ;;;; Scratch
 
