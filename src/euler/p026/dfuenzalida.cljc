@@ -1,7 +1,7 @@
 (ns euler.p026.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest read-string format]]
+   [euler.utils :as u :refer [deftest md5]]
    [euler.p026.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -42,7 +42,7 @@
 (deftest part-1
   (is (= 7 (solve 10))) ;; 1/7 has the largest period from 1/2 to 1/10
   (is (= (str answer)
-         (str (solve 1000)))))
+         (md5 (str (solve 1000))))))
 
 ;;;; Scratch
 

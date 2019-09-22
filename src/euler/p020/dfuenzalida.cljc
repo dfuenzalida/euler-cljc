@@ -1,7 +1,7 @@
 (ns euler.p020.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest to-bigint parse-int]]
+   [euler.utils :as u :refer [deftest to-bigint parse-int md5]]
    [euler.p020.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -13,9 +13,9 @@
        (map (comp parse-int str)) ;; digits
        (reduce +)))
 
-(deftest part-1
+(deftest tests
   (is (= (str answer)
-         (str (solve)))))
+         (md5 (str (solve))))))
 
 ;;;; Scratch
 
