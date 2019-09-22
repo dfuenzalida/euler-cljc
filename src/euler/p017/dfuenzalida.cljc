@@ -1,7 +1,7 @@
 (ns euler.p017.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest]]
+   [euler.utils :as u :refer [deftest md5]]
    [euler.p017.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -33,14 +33,14 @@
        (map (comp count-letters cardinal))
        (reduce +)))
 
-(deftest misc-tests
+(deftest tests
   (is (= "three hundred and forty-two" (cardinal 342)))
   (is (= 23 (count-letters (cardinal 342))))
   (is (= "one hundred and fifteen" (cardinal 115)))
   (is (= 20 (count-letters (cardinal 115))))
   (is (= 19 (solve 5)))
   (is (= (str answer)
-         (str (solve 1000)))))
+         (md5 (str (solve 1000))))))
 
 ;;;; Scratch
 

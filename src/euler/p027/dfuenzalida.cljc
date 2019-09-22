@@ -1,7 +1,7 @@
 (ns euler.p027.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest primes]]
+   [euler.utils :as u :refer [deftest primes md5]]
    [euler.p027.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -31,7 +31,7 @@
   (is (= 40 (count-primes 1 41)))     ;; n^2 + n + n1 produces 40 primes
   (is (= 80 (count-primes -79 1601))) ;; n^2 - 79n + 1601 produces 80 primes
   (is (= (str answer)
-         (str (solve)))))
+         (md5 (str (solve))))))
 
 ;;;; Scratch
 

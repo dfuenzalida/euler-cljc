@@ -1,7 +1,7 @@
 (ns euler.p018.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest parse-int]]
+   [euler.utils :as u :refer [deftest parse-int md5]]
    [euler.p018.data :refer [small-input input answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -31,13 +31,13 @@
 (defn solve [strings]
   (find-max (to-vectors strings)))
 
-(deftest part-1
+(deftest tests
   (is (= (to-vectors small-input) [[3] [7 4] [2 4 6] [8 5 9 3]]))
   (is (= (numbers-seq (to-vectors small-input) 0) [3 7 2 8])) ;; leftmost branch
   (is (= (numbers-seq (to-vectors small-input) 7) [3 4 6 3])) ;; rightmost branch
   (is (= 23 (solve small-input)))
   (is (= (str answer)
-         (str (solve input)))))
+         (md5 (str (solve input))))))
 
 ;;;; Scratch
 

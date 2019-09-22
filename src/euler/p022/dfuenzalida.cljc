@@ -1,7 +1,7 @@
 (ns euler.p022.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest]]
+   [euler.utils :as u :refer [deftest md5]]
    [euler.p022.data :refer [input answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -18,12 +18,12 @@
      (map * word-scores (rest (range))) ;; multiply each score by their order
      (reduce +))))
 
-(deftest part-1
+(deftest tests
   (is (= 1 (char-score \A)))
   (is (= 26 (char-score \Z)))
   (is (= 53 (word-score "COLIN")))
   (is (= (str answer)
-         (str (solve)))))
+         (md5 (str (solve))))))
 
 ;;;; Scratch
 

@@ -1,7 +1,7 @@
 (ns euler.p023.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest]]
+   [euler.utils :as u :refer [deftest md5]]
    [euler.p023.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -33,11 +33,11 @@
 (defn solve []
   (non-abundant-sums 28123))
 
-(deftest part-1
+(deftest tests
   (is (abundant? 12))
   (is (= (reduce + (range 1 24)) (non-abundant-sums 24)))
   (is (= (str answer)
-         (str (solve)))))
+         (md5 (str (solve))))))
 
 ;;;; Scratch
 

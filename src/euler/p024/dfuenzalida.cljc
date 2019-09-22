@@ -1,7 +1,7 @@
 (ns euler.p024.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest read-string format]]
+   [euler.utils :as u :refer [deftest md5]]
    [euler.p024.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -30,7 +30,7 @@
   (is (= ["012" "021" "102" "120" "201" "210"]
          (flatten (permutate [] [0 1 2]))))
   (is (= (str answer)
-         (str (solve)))))
+         (md5 (str (solve))))))
 
 ;;;; Scratch
 
