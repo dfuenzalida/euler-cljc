@@ -1,7 +1,7 @@
 (ns euler.p031.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest read-string format]]
+   [euler.utils :as u :refer [deftest md5]]
    [euler.p031.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -24,7 +24,7 @@
   (is (= 1 (solve 1)))
   (is (= 2 (solve 2)))
   (is (= (str answer)
-         (str (solve 200)))))
+         (md5 (str (solve 200))))))
 
 ;;;; Scratch
 

@@ -1,7 +1,7 @@
 (ns euler.p050.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest primes]]
+   [euler.utils :as u :refer [deftest primes md5]]
    [euler.p050.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -29,7 +29,7 @@
   (is (= [41 6] (solve 100)))
   (is (= [953 21] (solve 1000)))
   (is (= (str answer)
-         (str (first (solve 1000000))))))
+         (md5 (str (first (solve 1000000)))))))
 
 ;;;; Scratch
 

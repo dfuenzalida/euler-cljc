@@ -1,7 +1,7 @@
 (ns euler.p042.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest]]
+   [euler.utils :as u :refer [deftest md5]]
    [euler.p042.data :refer [input answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -31,7 +31,7 @@
   (is (= [1, 3, 6, 10, 15, 21, 28, 36, 45, 55] (triangle-numbers 55)))
   (is (= 55 (word-score "SKY")))
   (is (= (str answer)
-         (str (solve)))))
+         (md5 (str (solve))))))
 
 ;;;; Scratch
 

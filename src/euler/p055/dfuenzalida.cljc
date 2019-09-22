@@ -1,7 +1,7 @@
 (ns euler.p055.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest read-string to-bigint]]
+   [euler.utils :as u :refer [deftest read-string to-bigint md5]]
    [euler.p055.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -24,7 +24,7 @@
   (is (lychrel? 1 196))
   (is (lychrel? 1 4994))
   (is (= (str answer)
-         (str (solve)))))
+         (md5 (str (solve))))))
 
 ;;;; Scratch
 

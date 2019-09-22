@@ -1,7 +1,7 @@
 (ns euler.p048.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest]]
+   [euler.utils :as u :refer [deftest md5]]
    [euler.p048.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -17,7 +17,7 @@
 (deftest tests
   (is (= (rem 10405071317 ten-zeros) (solve 10)))
   (is (= (str answer)
-         (str (solve 1000)))))
+         (md5 (str (solve 1000))))))
 
 ;;;; Scratch
 

@@ -1,7 +1,7 @@
 (ns euler.p040.dfuenzalida
   (:refer-clojure :exclude [read-string format])
   (:require
-   [euler.utils :as u :refer [deftest parse-int]]
+   [euler.utils :as u :refer [deftest parse-int md5]]
    [euler.p040.data :refer [answer]]
    [clojure.test :as t :refer [is testing]]))
 
@@ -22,7 +22,7 @@
 (deftest tests
   (is (= \1 (last (take 13 (all-digits))))) ;; 13, not 12 because of extra digit
   (is (= (str answer)
-         (str (solve)))))
+         (md5 (str (solve))))))
 
 ;;;; Scratch
 
