@@ -58,14 +58,14 @@
           (concat
            (mapv vector (generate 1 0 1) (repeat :p4))
            (mapv vector (generate 3 -1 2) (repeat :p5))))))
-  
+
   (is (= (str answer)
          (md5 (str (solve))))))
 
 ;;;; Scratch
 
 ;; Groups are pairs of <numbers matching their last-first 2 digits> and <series they belong to>:
-;; 
+;;
 ;; [
 ;;   [
 ;;     [8128 2882] ;; elements, "tail" = 82
